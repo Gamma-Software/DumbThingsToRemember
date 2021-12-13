@@ -1,0 +1,6 @@
+# ignore everything unless README.md and script
+*
+
+!.git*
+!README.md
+!add_dumb_script.sh
