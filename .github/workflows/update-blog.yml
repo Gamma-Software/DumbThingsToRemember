@@ -24,22 +24,23 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
+      - name: Checkout Blog
+        uses: actions/checkout@master
+        with: 
+          repository: gamma-software/gamma-software.github.io
+          token: ${{ secrets.ACTIONS_TOKEN }}
+          path: ./blog
       - name: Install pandoc to concatenate markdowns
         run: >
           sudo apt install pandoc
       - name: Concatenate the template and the dumb things 
         run: >
-          pandoc .github/template-blog.md README.md .github/2021-12-25-dumb-things-to-remember.md
+          pandoc .github/template-blog.md README.md -o ./blog/_photography/2021-12-25-dumb-things-to-remember.md
       - name: Pushes to another repository
-        id: push_directory
-        uses: cpina/github-action-push-to-another-repository@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: '.github/2021-12-25-dumb-things-to-remember.md'
-          destination-github-username: 'gamma-software'
-          destination-repository-name: 'gamma-software.github.io'
-          user-email: valentin.rudloff.perso@gmail.com
-          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-          target-branch: main
-          target-directory: '_photography/2021-12-25-dumb-things-to-remember.md'
+        run: >
+          cd ./blog
+          git add _photography/2021-12-25-dumb-things-to-remember.md
+          git config user.name gamma-software
+          git config user.email valentin.rudloff.perso@gmail.com
+          git commit -am "update dumb things to remember"
+          git push
