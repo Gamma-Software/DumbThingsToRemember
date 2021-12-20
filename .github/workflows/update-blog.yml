@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@master
         with: 
           repository: gamma-software/gamma-software.github.io
-          token: ${{ secrets.ACTIONS_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           path: ./blog
       - name: Install pandoc to concatenate markdowns
         run: >
