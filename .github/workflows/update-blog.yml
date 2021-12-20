@@ -37,7 +37,7 @@ jobs:
         run: >
           pandoc .github/template-blog.md README.md -o ./blog/_photography/2021-12-25-dumb-things-to-remember.md
       - name: Pushes to another repository
-        run: >
+        run: |
           cd blog
           git add _photography/2021-12-25-dumb-things-to-remember.md
           git config user.name gamma-software
