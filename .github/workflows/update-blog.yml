@@ -35,7 +35,7 @@ jobs:
           sudo apt install pandoc
       - name: Concatenate the template and the dumb things 
         run: >
-          pandoc .github/template-blog.md README.md -o ./blog/_photography/2021-12-25-dumb-things-to-remember.md
+          pandoc .github/template-blog.md README.md -o ./blog/_projects/2021-12-25-dumb-things-to-remember.md
       - name: Pushes to another repository
         uses: cpina/github-action-push-to-another-repository@main
         env:
