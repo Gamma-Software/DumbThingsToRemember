@@ -37,10 +37,13 @@ jobs:
         run: >
           pandoc .github/template-blog.md README.md -o ./blog/_photography/2021-12-25-dumb-things-to-remember.md
       - name: Pushes to another repository
-        run: |
-          cd blog
-          git add _photography/2021-12-25-dumb-things-to-remember.md
-          git config user.name gamma-software
-          git config user.email valentin.rudloff.perso@gmail.com
-          git commit -am "update dumb things to remember"
-          git push
+        uses: cpina/github-action-push-to-another-repository@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          source-directory: './blog/_photography'
+          destination-github-username: 'gamma-software'
+          destination-repository-name: 'gamma-software.github.io'
+          user-email: valentin.rudloff.perso@gmail.com
+          target-branch: main
+          commit-message: Update blog from $GITHUB_REF
