@@ -41,7 +41,7 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN }}
         with:
-          source-directory: './blog/_photography'
+          source-directory: './blog/_projects'
           target-directory: '_projects'
           destination-github-username: 'gamma-software'
           destination-repository-name: 'gamma-software.github.io'
