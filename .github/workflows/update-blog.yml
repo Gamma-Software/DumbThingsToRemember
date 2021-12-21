@@ -42,7 +42,7 @@ jobs:
           API_TOKEN_GITHUB: ${{ secrets.API_TOKEN }}
         with:
           source-directory: './blog/_photography'
-          target-directory: '_photography'
+          target-directory: '_projects'
           destination-github-username: 'gamma-software'
           destination-repository-name: 'gamma-software.github.io'
           user-email: valentin.rudloff.perso@gmail.com
