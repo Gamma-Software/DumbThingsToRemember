@@ -48,3 +48,5 @@ jobs:
           user-email: valentin.rudloff.perso@gmail.com
           target-branch: main
           commit-message: Update blog from $GITHUB_REF
+      - name: Go check the modification
+        run: echo -e "https://github.com/Gamma-Software/gamma-software.github.io or https://gamma-software.github.io/"
