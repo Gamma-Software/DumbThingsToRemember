@@ -2,11 +2,12 @@
 
 This repository list all the dumb things that I encoutered and must be noted on a notepad (this is actually the notepad)
 
+
 ## Docker
 
 ### DNS
 
-I installed on my server a DNS resolver. The docker engine parameter must be updated to add the ip of the dns server. In the */etc/docker/daemon.json* file.
+I installed on my server a DNS resolver. The docker engine parameter must be updated to add the ip of the dns server. In the */etc/docker/daemon.json* file
 ``` json
 {
   "dns": ["192.168.1.34", "8.8.8.8"]
