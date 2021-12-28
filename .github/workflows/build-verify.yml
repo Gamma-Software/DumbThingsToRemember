@@ -38,6 +38,7 @@ jobs:
           retention-days: 1
   verify:
     # The type of runner that the job will run on
+    needs: build
     runs-on: ubuntu-latest
     container:
       image: valentinrudloff/generate-dumb-things-deb:latest
