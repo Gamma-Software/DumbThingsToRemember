@@ -28,9 +28,6 @@ jobs:
       - name: Setup
         run: >
           cd .. && mv DumbThingsToRemember/* /build && cd /build
-      - name: build
-        run: >
-          cd /build && make ded
   build:
     needs: setup
     runs-on: ubuntu-latest
