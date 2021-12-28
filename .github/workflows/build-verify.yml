@@ -32,6 +32,7 @@ jobs:
         run: >
           mv DumbThingsToRemember/* /build
       - name: go to build dir
+        run: >
           cd /build
       - name: build
         run: >
