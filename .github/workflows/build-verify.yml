@@ -25,18 +25,12 @@ jobs:
       image: valentinrudloff/generate-dumb-things-deb:latest
     steps:
       - uses: actions/checkout@v2
-      - name: setup
-        run: >
-          cd .. && ls -l
-      - name: move files
-        run: >
-          ls && mv DumbThingsToRemember/* /build
-      - name: go to build dir
-        run: >
-          cd /build
       - name: build
-        run: >
+        run: |
+          cd ..
+          mv DumbThingsToRemember/* /build
+          cd /build
           ./build_deb/build_deb.sh
       - name: verify
-        run: >
+        run: |
           ./build_deb/verify_deb.sh
