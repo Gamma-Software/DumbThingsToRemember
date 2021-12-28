@@ -1,6 +1,6 @@
-Package: dumb_things_to_remember
+Package: dumb-things-to-remember
 Name: Dumb Things To Remember
-Version: ${DEBVERSION}
+Version: {VERSION}
 Section: misc
 Architecture: all
 Author: Valentin Rudloff

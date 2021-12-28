@@ -21,8 +21,14 @@ cp ../$SOURCEBIN $DEBFOLDERNAME/$SOURCEBINPATH
 # Copy DEBIAN folder
 cp -r DEBIAN $DEBFOLDERNAME
 
+# Update version in control file
+sed -i "s/{VERSION}/$DEBVERSION/g" $DEBFOLDERNAME/DEBIAN/control
+
 # Copy changelog
 cp ../CHANGELOG.md $DEBFOLDERNAME/DEBIAN/changelog
 
 # Build deb package
 dpkg-deb --build --root-owner-group $DEBFOLDERNAME
+
+# Remove build folder
+rm -rf $DEBFOLDERNAME
