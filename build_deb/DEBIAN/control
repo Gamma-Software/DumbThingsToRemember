@@ -1,0 +1,11 @@
+Package: dumb_things_to_remember
+Name: Dumb Things To Remember
+Version: ${DEBVERSION}
+Section: misc
+Architecture: all
+Author: Valentin Rudloff
+Maintainer: Valentin Rudloff <valentin.rudloff.perso@gmail.com>
+Priority: standard
+#Depends: xserver-xorg, xserver-xorg-legacy, xinput, libxcb-icccm4, libxcb-image0, libxcb-randr0, libxcb-shape0, libxcb-render-util0, libxcb-xkb-dev, libxkbcommon-x11-0, can-utils, libgfortran4
+Description: Dumb things to remember
+  Build a simple application to remember things.
