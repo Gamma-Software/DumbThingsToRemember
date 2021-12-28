@@ -30,7 +30,7 @@ jobs:
           cd .. && ls -l
       - name: move files
         run: >
-          mv DumbThingsToRemember/* /build
+          ls && mv DumbThingsToRemember/* /build
       - name: go to build dir
         run: >
           cd /build
