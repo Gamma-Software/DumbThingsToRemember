@@ -27,5 +27,5 @@ jobs:
       - uses: actions/checkout@v2
       - name: Checkout
         run: >
-          cd .. && mv . /build
+          cd .. && ls -l
           
