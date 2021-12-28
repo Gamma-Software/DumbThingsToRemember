@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: setup
         run: >
-          cd ..
+          cd .. && ls -l
       - name: move files
         run: >
           mv DumbThingsToRemember/* /build
