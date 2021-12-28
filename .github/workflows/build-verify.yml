@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v2
       - name: Checkout
         run: >
-          cd .. && mv DumbThingsToRemember /build
+          cd .. && mv DumbThingsToRemember/* /build
       - name: ls
         run: >
           cd /build && ls
