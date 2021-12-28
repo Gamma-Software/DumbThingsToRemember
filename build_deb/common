@@ -1,0 +1,27 @@
+# Configure your paths and filenames
+SOURCEBINPATH=/usr/bin
+SOURCEBIN=add_dumb_things
+PCK_NAME=dumb-things-to-remember
+DEBVERSION=1.0
+DEBEMAIL="valentin.rudloff.perso@gmail.com"
+DEBFULLNAME="Valentin RUDLOFF"
+REVISION=1
+ARCHITECTURE=all
+DEBFOLDERNAME=${PCK_NAME}_${DEBVERSION}-${REVISION}_${ARCHITECTURE}
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+# function to display an error message and exit
+function error_exit()
+{
+    echo -e "${RED}${1}${NC}"
+    exit ${2}
+}
+
+# function to display a success message
+function success_msg()
+{
+    echo -e "${GREEN}${1}${NC}"
+}

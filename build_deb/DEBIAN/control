@@ -1,4 +1,4 @@
-Package: dumb-things-to-remember
+Package: {PCK_NAME}
 Name: Dumb Things To Remember
 Version: {VERSION}
 Section: misc

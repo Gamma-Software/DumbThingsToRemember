@@ -1,14 +1,11 @@
-# Configure your paths and filenames
-SOURCEBINPATH=/usr/bin
-SOURCEBIN=add_dumb_things.sh
-DEBFOLDER=dumb-things
-DEBVERSION=1.0
-DEBEMAIL="valentin.rudloff.perso@gmail.com"
-DEBFULLNAME="Valentin RUDLOFF"
-REVISION=1
-ARCHITECTURE=all
+#!/bin/bash
 
-DEBFOLDERNAME=${DEBFOLDER}_${DEBVERSION}-${REVISION}_${ARCHITECTURE}
+# Change dir to the script location
+cd build_deb
+. ./common # import common variables and functions
+
+# Make sure the deb package is removed
+rm -rf $DEBFOLDERNAME
 
 # Create your scripts source dir
 rm -rf $DEBFOLDERNAME # Make sure it's clean
@@ -21,8 +18,9 @@ cp ../$SOURCEBIN $DEBFOLDERNAME/$SOURCEBINPATH
 # Copy DEBIAN folder
 cp -r DEBIAN $DEBFOLDERNAME
 
-# Update version in control file
+# Update version and pck name in control file
 sed -i "s/{VERSION}/$DEBVERSION/g" $DEBFOLDERNAME/DEBIAN/control
+sed -i "s/{PCK_NAME}/$PCK_NAME/g" $DEBFOLDERNAME/DEBIAN/control
 
 # Copy changelog
 cp ../CHANGELOG.md $DEBFOLDERNAME/DEBIAN/changelog
