@@ -18,7 +18,7 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build-verify:
+  build:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
     container:
@@ -31,6 +31,24 @@ jobs:
           mv DumbThingsToRemember/* /build
           cd /build
           ./build_deb/build_deb.sh
-      - name: verify
+      - uses: actions/upload-artifact@v2
+        with:
+          name: debian-pck
+          path: /build/*.deb
+          retention-days: 1
+  verify:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    container:
+      image: valentinrudloff/generate-dumb-things-deb:latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/download-artifact@v2
+        with:
+          name: debian-pck
+      - name: build
         run: |
+          cd ..
+          mv DumbThingsToRemember/* /build
+          cd /build
           ./build_deb/verify_deb.sh
