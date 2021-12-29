@@ -22,8 +22,11 @@ jobs:
       image: valentinrudloff/generate-dumb-things-deb:latest
     steps:
       - uses: actions/checkout@v2
-      - name: get the tag name
-        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - name: Get the version 
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//} 
+      - name: tes
+        run: echo -e $VERSION $get_version
       - name: build
         run: |
           cd ..
@@ -49,8 +52,9 @@ jobs:
           name: debian-pck
       - name: get the tag name
         run: echo -e ${{ env.TAG }}
-      - name: get the tag name
-        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
+      - name: Get the version 
+        id: get_version
+        run: echo ::set-output name=VERSION::${GITHUB_REF/refs\/tags\//} 
       - name: build
         run: |
           cd ..
