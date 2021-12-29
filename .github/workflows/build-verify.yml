@@ -34,7 +34,7 @@ jobs:
       - uses: actions/upload-artifact@v2
         with:
           name: debian-pck
-          path: /build/*.deb
+          path: /build
           retention-days: 1
   verify:
     # The type of runner that the job will run on
@@ -43,13 +43,11 @@ jobs:
     container:
       image: valentinrudloff/generate-dumb-things-deb:latest
     steps:
-      - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           name: debian-pck
       - name: build
         run: |
-          cd ..
-          mv DumbThingsToRemember/* /build
-          cd /build
+          ls -l
+          ls -l /build
           ./build_deb/verify_deb.sh
