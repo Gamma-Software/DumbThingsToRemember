@@ -46,7 +46,7 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
-          name: debian-pck
+          name: debian-pck-${{ env.RELEASE_VERSION }}
       - name: build
         run: |
           cd ..
