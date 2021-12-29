@@ -23,21 +23,22 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: tag
-        run: echo -e ${{ github.event.release.tag_name }}
+        run: echo -e ${{ github.event.ref }}
       - name: build
         run: |
           cd ..
           mv DumbThingsToRemember/* /build
           cd /build
-          ./build_deb/build_deb.sh ${{ github.event.release.tag_name }}
+          ./build_deb/build_deb.sh ${{ github.event.ref }}
       - uses: actions/upload-artifact@v2
         with:
-          name: debian-pck-${{ github.event.release.tag_name }}
+          name: debian-pck-${{ github.event.ref }}
           path: /build/build_deb/*.deb
           retention-days: 1 # Should be revised 
   verify:
     # The type of runner that the job will run on
     needs: build
+    if: always() # Do not verify if the build failed
     runs-on: ubuntu-latest
     container:
       image: valentinrudloff/generate-dumb-things-deb:latest
@@ -52,4 +53,4 @@ jobs:
           mv DumbThingsToRemember/* /build
           cd /build
           mv *.deb /build/build_deb
-          ./build_deb/verify_deb.sh ${{ github.event.release.tag_name }}
+          ./build_deb/verify_deb.sh ${{ github.event.ref }}
