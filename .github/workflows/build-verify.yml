@@ -22,6 +22,8 @@ jobs:
       image: valentinrudloff/generate-dumb-things-deb:latest
     steps:
       - uses: actions/checkout@v2
+      - name: tag
+        run: echo -e ${{ github.event.release.tag_name }}
       - name: build
         run: |
           cd ..
