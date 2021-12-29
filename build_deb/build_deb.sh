@@ -23,7 +23,7 @@ cp ../$SOURCEBIN $DEBFOLDERNAME/$SOURCEBINPATH
 cp -r DEBIAN $DEBFOLDERNAME
 
 # Update version and pck name in control file
-sed -i "s/{VERSION}/$DEBVERSION/g" $DEBFOLDERNAME/DEBIAN/control
+sed -i "s/{VERSION}/${1}/g" $DEBFOLDERNAME/DEBIAN/control
 sed -i "s/{PCK_NAME}/$PCK_NAME/g" $DEBFOLDERNAME/DEBIAN/control
 
 # Copy changelog
