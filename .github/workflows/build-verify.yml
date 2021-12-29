@@ -22,17 +22,17 @@ jobs:
       image: valentinrudloff/generate-dumb-things-deb:latest
     steps:
       - uses: actions/checkout@v2
-      - name: tag
-        run: echo -e ${{ github.event.ref }}
+      - name: get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: build
         run: |
           cd ..
           mv DumbThingsToRemember/* /build
           cd /build
-          ./build_deb/build_deb.sh ${{ github.event.ref }}
+          ./build_deb/build_deb.sh ${{ env.TAG }}
       - uses: actions/upload-artifact@v2
         with:
-          name: debian-pck-${{ github.event.ref }}
+          name: debian-pck-${{ env.TAG }}
           path: /build/build_deb/*.deb
           retention-days: 1 # Should be revised 
   verify:
@@ -47,10 +47,14 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: debian-pck
+      - name: get the tag name
+        run: echo -e ${{ env.TAG }}
+      - name: get the tag name
+        run: echo "TAG=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_ENV
       - name: build
         run: |
           cd ..
           mv DumbThingsToRemember/* /build
           cd /build
           mv *.deb /build/build_deb
-          ./build_deb/verify_deb.sh ${{ github.event.ref }}
+          ./build_deb/verify_deb.sh ${{ env.TAG }}
