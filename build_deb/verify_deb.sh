@@ -1,8 +1,12 @@
 #!/bin/bash
+echo -e "Version to verify: $1"
 
 # Change dir to the script location
 cd build_deb
 . ./common # import common variables and functions
+
+# Name of the deb package to verify
+DEBFOLDERNAME=${PCK_NAME}_${1}-${REVISION}_${ARCHITECTURE}
 
 # Check that the deb package correctly created
 if [ $DEBFOLDERNAME.deb ]; then

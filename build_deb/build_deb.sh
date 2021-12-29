@@ -1,8 +1,12 @@
 #!/bin/bash
+echo -e "Version to build: $1"
 
 # Change dir to the script location
 cd build_deb
 . ./common # import common variables and functions
+
+# Name of the deb package to build
+DEBFOLDERNAME=${PCK_NAME}_${1}-${REVISION}_${ARCHITECTURE}
 
 # Make sure the deb package is removed
 rm -rf $DEBFOLDERNAME

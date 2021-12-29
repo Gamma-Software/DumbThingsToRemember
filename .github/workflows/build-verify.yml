@@ -6,11 +6,8 @@ name: Build & Verify DEB
 on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
-    branches: [ main ]
     tags:
     - v*
-  pull_request:
-    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -30,12 +27,12 @@ jobs:
           cd ..
           mv DumbThingsToRemember/* /build
           cd /build
-          ./build_deb/build_deb.sh
+          ./build_deb/build_deb.sh ${{ github.event.release.tag_name }}
       - uses: actions/upload-artifact@v2
         with:
-          name: debian-pck
+          name: debian-pck-${{ github.event.release.tag_name }}
           path: /build/build_deb/*.deb
-          retention-days: 1
+          retention-days: 1 # Should be revised 
   verify:
     # The type of runner that the job will run on
     needs: build
@@ -53,4 +50,4 @@ jobs:
           mv DumbThingsToRemember/* /build
           cd /build
           mv *.deb /build/build_deb
-          ./build_deb/verify_deb.sh
+          ./build_deb/verify_deb.sh ${{ github.event.release.tag_name }}
