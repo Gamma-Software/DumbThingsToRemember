@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Uninstalling add_dumb_things script..."
+echo "Removing add_dumb_things script from /usr/bin..."

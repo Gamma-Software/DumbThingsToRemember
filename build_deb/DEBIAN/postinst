@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "Installing add_dumb_things script..."
+echo "Copying add_dumb_things script to /usr/bin..."
