@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: Build and Verify
+name: Build & Verify DEB
 
 # Controls when the workflow will run
 on:
@@ -43,11 +43,13 @@ jobs:
     container:
       image: valentinrudloff/generate-dumb-things-deb:latest
     steps:
+      - uses: actions/checkout@v2
       - uses: actions/download-artifact@v2
         with:
           name: debian-pck
       - name: build
         run: |
-          ls -l
-          ls -l /build
+          cd ..
+          mv DumbThingsToRemember/* /build
+          cd /build
           ./build_deb/verify_deb.sh
