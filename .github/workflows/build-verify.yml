@@ -49,7 +49,9 @@ jobs:
           name: debian-pck
       - name: build
         run: |
+          ls -l *
           cd ..
           mv DumbThingsToRemember/* /build
+          ls -l
           cd /build
           ./build_deb/verify_deb.sh
