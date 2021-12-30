@@ -59,7 +59,7 @@ user	0m0.001s
 sys 	0m0.002s
 ```
 
-### Make fun of executing a script
+###  Make fun of executing a script
 
 mpv audio_file.wav & <script>
 
